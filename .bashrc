@@ -2,12 +2,34 @@
 export EDITOR=vim 
 export PS1="[\u][\h][\w] \\$ " 
 # config
-# todo: add autodetection of the below 
 package_manager="apt" # apt or pacman 
-youtube_dl_installed="yes" # is youtube-dl installed
-ffmpeg_installed="yes" # is ffmpeg installed 
-trash_cli_installed="yes" # is trash-cli installed 
-wget_installed="yes" # is wget installed 
+if [[ -f `which youtube` ]]
+then 
+	youtube_dl_installed="yes"
+else
+	youtube_dl_installed="no"
+fi
+
+if [[ -f `which ffmpeg` ]]
+then 
+	ffmpeg_installed="yes"
+else
+	ffmpeg_installed="no"
+fi 
+
+if [[ -f `which trash-put` ]] 
+then
+	trash_cli_installed="yes"
+else
+	trash_cli_installed="no"
+fi 
+
+if [[ -f `which wget` ]]
+then 
+	wget_installed="yes"
+else
+	wget_installed="no"
+fi
 
 
 dirsize () {
