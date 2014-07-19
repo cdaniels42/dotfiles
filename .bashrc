@@ -1,8 +1,13 @@
-# this comment is a test, to make sure git commit is working
-
-export EDITOR=vim
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'''
-export PS1="[\u][\h][\w] \\$ "
+# exports 
+export EDITOR=vim 
+export PS1="[\u][\h][\w] \\$ " 
+# config
+# todo: add autodetection of the below 
+package_manager="apt" # apt or pacman 
+youtube_dl_installed="yes" # is youtube-dl installed
+ffmpeg_installed="yes" # is ffmpeg installed 
+trash_cli_installed="yes" # is trash-cli installed 
+wget_installed="yes" # is wget installed 
 
 
 dirsize () {
@@ -38,25 +43,57 @@ extract () {
 shortcuts () {
 	echo "dirsize"
 	echo "extract"
-	echo "agi - sudo apt-get install"
-	echo "agu - sudo apt-get update"
+	echo "agi - package manager install"
+	echo "agu - package manager update"
 	echo "suu - update, upgrade, and autoremove"
-	echo "agui - sudo apt-get update && sudo apt-get install"
-	echo "agr - sudo apt-get remove"
-	echo "acs - sudo apt-cache search"
+	echo "agui - package manager update and install"
+	echo "agr - package manager uninstall"
+	echo "acs - package manager search "
+	
+	if [ "$ffmpeg_installed" == "yes" ]
+	then
 	echo "rec - record far left desktop desktop to output.mkv"
+	fi 
+	
+	if [ "$trash_cli_installed" == "yes" ]
+	then	
 	echo "tp - trash-put"
 	echo "tl - trash-list"
+	fi
+	
+	if [ "$wget_installed" == "yes" ]
+	then
 	echo "rwget - capture page, plus all linked pages"
+	fi 
 }
 
+if [ "$package_manager" == "apt" ]
+then
 alias agi="sudo apt-get install"
 alias agu="sudo apt-get update"
 alias suu="sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove"
 alias agui="sudo apt-get update && sudo apt-get install"
 alias agr="sudo apt-get remove" 
 alias acs="sudo apt-cache search"
+fi 
+
+if [ "$package_manager" == "pacman" ]
+then 
+echo "pacman support is not yet implimented"
+fi 
+
+if [ "$ffmpeg_installed" == "yes" ]
+then 
 alias rec="ffmpeg -f x11grab -s 1280x1024 -r 25 -i :0.0 output.mkv"
+fi 
+
+if [ "$trash_cli_installed" == "yes" ] 
+then 
 alias tp="sudo trash-put"
 alias tl="sudo trash-list"
+fi 
+
+if [ "$wget_installed" == "yes" ]
+then 
 alias rwget="wget -e robots=off -r -nc -np --convert-links --level=0"
+fi 
