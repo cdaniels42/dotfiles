@@ -1,3 +1,5 @@
+# this comment is a test, to make sure git commit is working
+
 export EDITOR=vim
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'''
 export PS1="[\u][\h][\w] \\$ "
