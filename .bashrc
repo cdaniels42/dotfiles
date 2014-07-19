@@ -74,48 +74,48 @@ shortcuts () {
 	
 	if [ "$ffmpeg_installed" == "yes" ]
 	then
-	echo "rec - record far left desktop desktop to output.mkv"
+		echo "rec - record far left desktop desktop to output.mkv"
 	fi 
 	
 	if [ "$trash_cli_installed" == "yes" ]
 	then	
-	echo "tp - trash-put"
-	echo "tl - trash-list"
+		echo "tp - trash-put"
+		echo "tl - trash-list"
 	fi
 	
 	if [ "$wget_installed" == "yes" ]
 	then
-	echo "rwget - capture page, plus all linked pages"
+		echo "rwget - capture page, plus all linked pages"
 	fi 
 }
 
 if [ "$package_manager" == "apt" ]
 then
-alias agi="sudo apt-get install"
-alias agu="sudo apt-get update"
-alias suu="sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove"
-alias agui="sudo apt-get update && sudo apt-get install"
-alias agr="sudo apt-get remove" 
-alias acs="sudo apt-cache search"
+	alias agi="sudo apt-get install"
+	alias agu="sudo apt-get update"
+	alias suu="sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove"
+	alias agui="sudo apt-get update && sudo apt-get install"
+	alias agr="sudo apt-get remove" 
+	alias acs="sudo apt-cache search"
 fi 
 
 if [ "$package_manager" == "pacman" ]
 then 
-echo "pacman support is not yet implimented"
+	echo "pacman support is not yet implimented"
 fi 
 
 if [ "$ffmpeg_installed" == "yes" ]
-then 
-alias rec="ffmpeg -f x11grab -s 1280x1024 -r 25 -i :0.0 output.mkv"
+then 	
+	alias rec="ffmpeg -f x11grab -s 1280x1024 -r 25 -i :0.0 output.mkv"
 fi 
 
 if [ "$trash_cli_installed" == "yes" ] 
 then 
-alias tp="sudo trash-put"
-alias tl="sudo trash-list"
+	alias tp="sudo trash-put"
+	alias tl="sudo trash-list"
 fi 
 
 if [ "$wget_installed" == "yes" ]
 then 
-alias rwget="wget -e robots=off -r -nc -np --convert-links --level=0"
+	alias rwget="wget -e robots=off -r -nc -np --convert-links --level=0"
 fi 
